@@ -3,12 +3,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { signInWithPopup } from "firebase/auth";
 import React from "react";
 import { Button, Card, Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { auth, provider } from "../firebase";
 
-const Login = () => {
+const Login = ({ setIsAuth }) => {
+  const navigate = useNavigate();
   const loginInWithGoogle = () => {
     // Googleでログイン
-    signInWithPopup(auth, provider);
+    signInWithPopup(auth, provider).then((result) => {
+      localStorage.setItem("isAuth", true);
+      setIsAuth(true);
+      navigate("/");
+    });
   };
   return (
     <Container>
