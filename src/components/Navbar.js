@@ -8,7 +8,7 @@ import React from "react";
 import { Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ isAuth }) => {
   return (
     <Nav
       className="justify-content-center bg-light"
@@ -29,14 +29,25 @@ const Navbar = () => {
           </Link>
         </Nav.Link>
       </Nav.Item>
-      <Nav.Item as="li">
-        <Nav.Link eventKey="link-2">
-          <Link to="/login">
-            <FontAwesomeIcon icon={faArrowRightToBracket} className="me-1" />
-            ログイン
-          </Link>
-        </Nav.Link>
-      </Nav.Item>
+      {!isAuth ? (
+        <Nav.Item as="li">
+          <Nav.Link eventKey="link-2">
+            <Link to="/login">
+              <FontAwesomeIcon icon={faArrowRightToBracket} className="me-1" />
+              ログイン
+            </Link>
+          </Nav.Link>
+        </Nav.Item>
+      ) : (
+        <Nav.Item as="li">
+          <Nav.Link eventKey="link-2">
+            <Link to="/logout">
+              <FontAwesomeIcon icon={faArrowRightToBracket} className="me-1" />
+              ログアウト
+            </Link>
+          </Nav.Link>
+        </Nav.Item>
+      )}
     </Nav>
   );
 };
