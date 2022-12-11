@@ -21,32 +21,43 @@ const Navbar = ({ isAuth }) => {
           </Link>
         </Nav.Link>
       </Nav.Item>
-      <Nav.Item as="li">
-        <Nav.Link eventKey="link-1">
-          <Link to="/createpost">
-            <FontAwesomeIcon icon={faFilePen} className="me-1" />
-            記事投稿
-          </Link>
-        </Nav.Link>
-      </Nav.Item>
-      {!isAuth ? (
-        <Nav.Item as="li">
-          <Nav.Link eventKey="link-2">
-            <Link to="/login">
-              <FontAwesomeIcon icon={faArrowRightToBracket} className="me-1" />
-              ログイン
-            </Link>
-          </Nav.Link>
-        </Nav.Item>
+
+      {isAuth ? (
+        <>
+          <Nav.Item as="li">
+            <Nav.Link eventKey="link-1">
+              <Link to="/createpost">
+                <FontAwesomeIcon icon={faFilePen} className="me-1" />
+                記事投稿
+              </Link>
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item as="li">
+            <Nav.Link eventKey="link-2">
+              <Link to="/logout">
+                <FontAwesomeIcon
+                  icon={faArrowRightToBracket}
+                  className="me-1"
+                />
+                ログアウト
+              </Link>
+            </Nav.Link>
+          </Nav.Item>
+        </>
       ) : (
-        <Nav.Item as="li">
-          <Nav.Link eventKey="link-2">
-            <Link to="/logout">
-              <FontAwesomeIcon icon={faArrowRightToBracket} className="me-1" />
-              ログアウト
-            </Link>
-          </Nav.Link>
-        </Nav.Item>
+        <>
+          <Nav.Item as="li">
+            <Nav.Link eventKey="link-2">
+              <Link to="/login">
+                <FontAwesomeIcon
+                  icon={faArrowRightToBracket}
+                  className="me-1"
+                />
+                ログイン
+              </Link>
+            </Nav.Link>
+          </Nav.Item>
+        </>
       )}
     </Nav>
   );
