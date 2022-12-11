@@ -35,7 +35,7 @@ const Home = () => {
               <small className="text-muted">
                 @{post.author.username} Last updated 3 mins ago
               </small>
-              {post.author.id === auth.currentUser.uid && (
+              {post.author.id === auth?.currentUser?.uid && (
                 <Button
                   variant="light"
                   onClick={() => {

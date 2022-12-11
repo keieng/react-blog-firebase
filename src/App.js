@@ -8,7 +8,7 @@ import Navbar from "./components/Navbar";
 import { useState } from "react";
 
 function App() {
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
 
   return (
     <Router>
@@ -18,7 +18,10 @@ function App() {
         {isAuth ? (
           <>
             <Route path="/createpost" element={<CreatePost />}></Route>
-            <Route path="/logout" element={<Logout />}></Route>
+            <Route
+              path="/logout"
+              element={<Logout setIsAuth={setIsAuth} />}
+            ></Route>
           </>
         ) : (
           <Route
