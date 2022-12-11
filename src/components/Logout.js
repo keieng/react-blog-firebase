@@ -1,10 +1,10 @@
 import { faArrowRightToBracket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { signInWithPopup, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
 import React from "react";
 import { Button, Card, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { auth, provider } from "../firebase";
+import { auth } from "../firebase";
 
 const Logout = ({ setIsAuth }) => {
   const navigate = useNavigate();
@@ -16,6 +16,7 @@ const Logout = ({ setIsAuth }) => {
       navigate("/login");
     });
   };
+
   return (
     <Container>
       <Card>
