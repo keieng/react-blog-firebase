@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 const Navbar = ({ isAuth }) => {
   return (
     <Nav
-      className="justify-content-center bg-light"
+      className="justify-content-center bg-light mb-3"
       /* defaultActiveKey="/home" */ as="ul"
     >
       <Nav.Item as="li">

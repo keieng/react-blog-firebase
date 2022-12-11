@@ -21,7 +21,7 @@ const Login = ({ setIsAuth }) => {
       <Card>
         <Card.Header>Login</Card.Header>
         <Card.Body></Card.Body>
-        <Card.Footer>
+        <Card.Footer className="text-end">
           <Button variant="primary" onClick={loginInWithGoogle}>
             <FontAwesomeIcon icon={faArrowRightToBracket} className="me-1" />
             Login
