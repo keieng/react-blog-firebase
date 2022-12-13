@@ -4,11 +4,23 @@ import {
   faHome,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { signInWithPopup } from "firebase/auth";
 import React from "react";
 import { Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { auth, provider } from "../firebase";
 
-const Navbar = ({ isAuth }) => {
+const Navbar = ({ isAuth, setIsAuth }) => {
+  const navigate = useNavigate();
+  const loginInWithGoogle = () => {
+    // Googleでログイン
+    signInWithPopup(auth, provider).then((result) => {
+      localStorage.setItem("isAuth", true);
+      setIsAuth(true);
+      navigate("/");
+    });
+  };
+
   return (
     <Nav
       className="justify-content-center bg-light mb-3"
@@ -47,14 +59,11 @@ const Navbar = ({ isAuth }) => {
       ) : (
         <>
           <Nav.Item as="li">
-            <Nav.Link eventKey="link-2">
-              <Link to="/login">
-                <FontAwesomeIcon
-                  icon={faArrowRightToBracket}
-                  className="me-1"
-                />
-                ログイン
-              </Link>
+            <Nav.Link eventKey="link-2" onClick={loginInWithGoogle}>
+              {/* <Link to="/login"> */}
+              <FontAwesomeIcon icon={faArrowRightToBracket} className="me-1" />
+              ログイン
+              {/* </Link> */}
             </Nav.Link>
           </Nav.Item>
         </>

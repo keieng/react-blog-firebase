@@ -12,7 +12,7 @@ function App() {
 
   return (
     <Router>
-      <Navbar isAuth={isAuth} />
+      <Navbar isAuth={isAuth} setIsAuth={setIsAuth} />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         {isAuth ? (
@@ -24,10 +24,11 @@ function App() {
             ></Route>
           </>
         ) : (
-          <Route
-            path="/login"
-            element={<Login setIsAuth={setIsAuth} />}
-          ></Route>
+          // <Route
+          //   path="/login"
+          //   element={<Login setIsAuth={setIsAuth} />}
+          // ></Route>
+          <></>
         )}
       </Routes>
     </Router>
