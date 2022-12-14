@@ -1,4 +1,3 @@
-import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./components/Home";
 import CreatePost from "./components/CreatePost";
@@ -18,10 +17,10 @@ function App() {
         {isAuth ? (
           <>
             <Route path="/createpost" element={<CreatePost />}></Route>
-            <Route
+            {/* <Route
               path="/logout"
               element={<Logout setIsAuth={setIsAuth} />}
-            ></Route>
+            ></Route> */}
           </>
         ) : (
           // <Route

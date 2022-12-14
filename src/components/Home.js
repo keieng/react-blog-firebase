@@ -32,9 +32,7 @@ const Home = () => {
             <Card.Header>{post.title}</Card.Header>
             <Card.Body>{post.postText}</Card.Body>
             <Card.Footer className="text-end">
-              <small className="text-muted">
-                @{post.author.username} Last updated 3 mins ago
-              </small>
+              <small className="text-muted">@{post.author.username}</small>
               {post.author.id === auth?.currentUser?.uid && (
                 <Button
                   variant="light"

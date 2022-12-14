@@ -4,7 +4,7 @@ import {
   faHome,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { signInWithPopup } from "firebase/auth";
+import { signInWithPopup, signOut } from "firebase/auth";
 import React from "react";
 import { Nav } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
@@ -21,13 +21,22 @@ const Navbar = ({ isAuth, setIsAuth }) => {
     });
   };
 
+  const logout = () => {
+    // Googleでログアウト
+    signOut(auth).then(() => {
+      localStorage.clear();
+      setIsAuth(false);
+      navigate("/");
+    });
+  };
+
   return (
     <Nav
       className="justify-content-center bg-light mb-3"
       /* defaultActiveKey="/home" */ as="ul"
     >
       <Nav.Item as="li">
-        <Nav.Link href="/home">
+        <Nav.Link href="/">
           <Link to="/">
             <FontAwesomeIcon icon={faHome} className="me-1" /> ホーム
           </Link>
@@ -45,14 +54,11 @@ const Navbar = ({ isAuth, setIsAuth }) => {
             </Nav.Link>
           </Nav.Item>
           <Nav.Item as="li">
-            <Nav.Link eventKey="link-2">
-              <Link to="/logout">
-                <FontAwesomeIcon
-                  icon={faArrowRightToBracket}
-                  className="me-1"
-                />
-                ログアウト
-              </Link>
+            <Nav.Link eventKey="link-2" onClick={logout}>
+              {/* <Link to="/logout"> */}
+              <FontAwesomeIcon icon={faArrowRightToBracket} className="me-1" />
+              ログアウト
+              {/* </Link> */}
             </Nav.Link>
           </Nav.Item>
         </>
